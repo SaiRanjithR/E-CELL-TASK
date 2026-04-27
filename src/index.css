@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+@theme {
+  --color-dark-bg: #0f172a;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-dark-bg);
+    color: #f1f5f9;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+}
