@@ -57,8 +57,9 @@ export function CalculatorApp() {
           <div className="lg:col-span-4 flex flex-col gap-6">
             <InputPanel
               state={appState}
-              onChange={(update) => setAppState(prev => ({ ...prev, ...update }))}
-            />
+              onChange={(update) => setAppState(prev => ({ ...prev, ...update }))} isAdvancedMode={false} setIsAdvancedMode={function (): void {
+                throw new Error('Function not implemented.');
+              }} />
             <BurnBreakdownChart breakdown={appState.breakdown} />
             <SmartInsights calc={activeCalc} appState={appState} />
           </div>
