@@ -144,7 +144,7 @@ export function FloatingElements({ variant = 'light' }: FloatingElementsProps) {
 
   return (
     <div
-      className="absolute inset-0 overflow-hidden pointer-events-none select-none z-0"
+      className="absolute inset-0 overflow-hidden pointer-events-none select-none z-0 hidden md:block"
       aria-hidden="true"
     >
       {items.map((item) => (

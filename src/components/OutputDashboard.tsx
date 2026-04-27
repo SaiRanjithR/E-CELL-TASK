@@ -58,7 +58,7 @@ export function OutputDashboard({ calc, appState }: OutputDashboardProps) {
     <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm flex flex-col items-center">
       
       {/* Hero Circular Ring */}
-      <div className="relative w-64 h-64 flex items-center justify-center mb-8">
+      <div className="relative w-48 h-48 md:w-64 md:h-64 flex items-center justify-center mb-6">
         <svg className="w-full h-full transform -rotate-90">
            {/* Background Track */}
            <circle cx="128" cy="128" r={radius} stroke="#f1f5f9" strokeWidth="12" fill="transparent" />
@@ -79,7 +79,7 @@ export function OutputDashboard({ calc, appState }: OutputDashboardProps) {
         <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
            <span className="text-sm font-medium text-slate-500 mb-1 tracking-wide">RUNWAY</span>
            <div className="flex items-baseline gap-1">
-              <span className={`text-5xl font-bold tracking-tight ${
+              <span className={`text-3xl md:text-5xl font-bold tracking-tight ${
                 isProfitable ? 'text-emerald-600' :
                 calc.statusZone === 'Healthy' || calc.statusZone === 'Strong' ? 'text-emerald-600' :
                 calc.statusZone === 'Warning' ? 'text-amber-600' : 'text-rose-600'
@@ -99,7 +99,7 @@ export function OutputDashboard({ calc, appState }: OutputDashboardProps) {
       </div>
 
       {/* Grid Metrics */}
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 w-full">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-3 w-full">
         <MetricCard icon={<Clock size={16} />} label="Days to Zero" value={isProfitable ? '∞' : calc.daysToZero} valueColor={isProfitable ? 'text-emerald-600' : calc.daysToZero > 365 ? 'text-emerald-600' : 'text-slate-900'} />
         <MetricCard icon={<Calendar size={16} />} label="Zero Cash Date" value={isProfitable ? 'Never' : formatDate(calc.zeroCashDate)} />
         <MetricCard icon={<Activity size={16} />} label="Net Burn" value={`${formatCurrency(calc.netBurn)}/mo`} valueColor={isProfitable ? 'text-emerald-600' : 'text-rose-600'} />

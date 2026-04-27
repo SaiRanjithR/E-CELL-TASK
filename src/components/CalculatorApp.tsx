@@ -47,8 +47,29 @@ export function CalculatorApp() {
 
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col font-sans text-slate-900 pb-24">
-      <Navbar />
+      <Navbar zone={activeCalc.statusZone} isProfitable={activeCalc.isProfitable} />
       <MetricsStrip calc={activeCalc} appState={appState} />
+
+      {/* Zone Status Banner */}
+      {(() => {
+        const banners = {
+          Critical: { bg: 'bg-rose-600', text: '🔴 Critical Zone — Runway is under 6 months. Take immediate action: cut burn or start fundraising now.' },
+          Warning:  { bg: 'bg-amber-500', text: '🟡 Warning Zone — Runway is 6–12 months. Begin fundraising preparation and review burn rate.' },
+          Healthy:  { bg: 'bg-emerald-600', text: '🟢 Healthy Zone — Runway of 12–18 months. Stay focused on growth and monitor key metrics.' },
+          Strong:   { bg: 'bg-indigo-600', text: '🔵 Strong Zone — Runway over 18 months. You have strategic advantage. Execute aggressively.' },
+        };
+        if (activeCalc.isProfitable) return (
+          <div className="w-full bg-emerald-600 text-white text-xs font-semibold text-center py-2 px-4 leading-relaxed">
+            ✅ Profitable — Revenue exceeds expenses. Your cash position is growing.
+          </div>
+        );
+        const b = banners[activeCalc.statusZone];
+        return (
+          <div className={`w-full ${b.bg} text-white text-xs font-semibold text-center py-2 px-4 leading-relaxed transition-all duration-500`}>
+            {b.text}
+          </div>
+        );
+      })()}
 
       <div className="max-w-[1400px] w-full mx-auto px-4 md:px-6 mt-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
@@ -57,9 +78,10 @@ export function CalculatorApp() {
           <div className="lg:col-span-4 flex flex-col gap-6">
             <InputPanel
               state={appState}
-              onChange={(update) => setAppState(prev => ({ ...prev, ...update }))} isAdvancedMode={false} setIsAdvancedMode={function (): void {
-                throw new Error('Function not implemented.');
-              }} />
+              onChange={(update) => setAppState(prev => ({ ...prev, ...update }))}
+
+
+            />
             <BurnBreakdownChart breakdown={appState.breakdown} />
             <SmartInsights calc={activeCalc} appState={appState} />
           </div>

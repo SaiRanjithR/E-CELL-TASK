@@ -21,7 +21,7 @@ export function LandingPage() {
           <span>Founder's Runway 2.0</span>
         </div>
 
-        <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight text-slate-900 leading-[1.15]">
+        <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 leading-[1.15]">
           The Financial Co-Pilot <br/>
           <span className="text-indigo-600">Every Founder Needs.</span>
         </h1>
